@@ -1,0 +1,19 @@
+public class Reader implements Runnable {
+    private CopyOnWriteArrayList<Integer> listOfNumbers;
+
+    public Reader(CopyOnWriteArrayList<Integer> listOfNumbers) {
+        this.listOfNumbers = listOfNumbers;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                Thread.sleep(1000); // задержка чтения
+                System.out.println("Reading: " + listOfNumbers);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
